@@ -1,3 +1,4 @@
+npm install @supabase/server
 const programData = [
       {
         id: "psicologia",
