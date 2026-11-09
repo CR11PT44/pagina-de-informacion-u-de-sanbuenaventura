@@ -780,8 +780,8 @@ const programData = [
           <div class="card-faculty">${escapeHTML(prog.faculty)}</div>
           <div class="card-title">${escapeHTML(prog.title)}</div>
           <div class="card-tags">
-            <span class="tag">${escapeHTML(prog.semesters)}</span>
             <span class="tag">${escapeHTML(prog.modality.split('/')[0])}</span>
+            <span class="tag">${escapeHTML(prog.semesters)}</span>
           </div>
           <div class="card-price">${escapeHTML(prog.price)} <span>/ semestre</span></div>
           <div class="card-summary">${escapeHTML(prog.summary)}</div>
