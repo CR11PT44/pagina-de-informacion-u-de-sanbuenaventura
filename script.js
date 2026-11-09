@@ -646,6 +646,21 @@ const programData = [
 
       try {
         supabaseClient = window.supabase.createClient(config.url, config.publishableKey);
+        supabaseClient.auth.onAuthStateChange(event => {
+          if (event !== 'PASSWORD_RECOVERY') return;
+
+          document.getElementById('adminPanel').hidden = false;
+          document.body.classList.add('admin-mode');
+          document.getElementById('adminLogin').hidden = false;
+          document.getElementById('adminLoginForm').hidden = true;
+          document.getElementById('forgotAdminPassword').hidden = true;
+          document.getElementById('adminRecoveryForm').hidden = true;
+          document.getElementById('adminSetPasswordForm').hidden = false;
+          document.getElementById('adminLoginMessage').textContent = '';
+          document.getElementById('adminSetPasswordMessage').textContent = '';
+          document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.getElementById('adminNewPassword').focus();
+        });
         await loadProgramsFromSupabase();
         if (remoteProgramCount === 0) {
           showSupabaseStatus('La base de datos aún está vacía. Inicia sesión como administrador para importar el catálogo inicial.');
@@ -1256,6 +1271,80 @@ const programData = [
 
     document.getElementById('adminAccessButton').addEventListener('click', openAdminPanel);
     document.getElementById('cancelAdminLogin').addEventListener('click', closeAdminPanel);
+    document.getElementById('forgotAdminPassword').addEventListener('click', () => {
+      const emailInput = document.getElementById('adminRecoveryEmail');
+      emailInput.value = document.getElementById('adminUsername').value.trim();
+      document.getElementById('adminLoginForm').hidden = true;
+      document.getElementById('forgotAdminPassword').hidden = true;
+      document.getElementById('adminRecoveryForm').hidden = false;
+      document.getElementById('adminRecoveryMessage').textContent = '';
+      emailInput.focus();
+    });
+    document.getElementById('cancelAdminRecovery').addEventListener('click', () => {
+      document.getElementById('adminRecoveryForm').hidden = true;
+      document.getElementById('adminLoginForm').hidden = false;
+      document.getElementById('forgotAdminPassword').hidden = false;
+      document.getElementById('adminRecoveryMessage').textContent = '';
+    });
+    document.getElementById('adminRecoveryForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const email = document.getElementById('adminRecoveryEmail').value.trim();
+      const message = document.getElementById('adminRecoveryMessage');
+      const submitButton = document.querySelector('#adminRecoveryForm button[type="submit"]');
+      if (!supabaseClient) {
+        message.textContent = 'Supabase no está conectado. Revisa la conexión e inténtalo de nuevo.';
+        return;
+      }
+
+      submitButton.disabled = true;
+      message.textContent = 'Enviando enlace...';
+      try {
+        const redirectTo = new URL(window.location.pathname, window.location.origin).toString();
+        const { error } = await supabaseClient.auth.resetPasswordForEmail(email, { redirectTo });
+        if (error) throw error;
+        message.textContent = 'Si el correo corresponde a una cuenta, recibirás un enlace para crear una nueva contraseña.';
+      } catch (error) {
+        message.textContent = 'No se pudo enviar el enlace: ' + error.message;
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+    document.getElementById('adminSetPasswordForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const password = document.getElementById('adminNewPassword').value;
+      const confirmation = document.getElementById('adminConfirmPassword').value;
+      const message = document.getElementById('adminSetPasswordMessage');
+      const submitButton = document.querySelector('#adminSetPasswordForm button[type="submit"]');
+      if (password !== confirmation) {
+        message.textContent = 'Las contraseñas no coinciden.';
+        return;
+      }
+      if (!supabaseClient) {
+        message.textContent = 'Supabase no está conectado. Revisa la conexión e inténtalo de nuevo.';
+        return;
+      }
+
+      submitButton.disabled = true;
+      message.textContent = 'Actualizando contraseña...';
+      try {
+        const { error } = await supabaseClient.auth.updateUser({ password });
+        if (error) throw error;
+        let result = 'Contraseña actualizada. Ya puedes iniciar sesión.';
+        const { error: signOutError } = await supabaseClient.auth.signOut();
+        if (signOutError) result += ' No se pudo cerrar la sesión: ' + signOutError.message;
+        document.getElementById('adminSetPasswordForm').reset();
+        document.getElementById('adminSetPasswordForm').hidden = true;
+        document.getElementById('adminLoginForm').hidden = false;
+        document.getElementById('forgotAdminPassword').hidden = false;
+        document.getElementById('adminUsername').value = document.getElementById('adminRecoveryEmail').value.trim();
+        message.textContent = '';
+        document.getElementById('adminLoginMessage').textContent = result;
+      } catch (error) {
+        message.textContent = 'No se pudo actualizar la contraseña: ' + error.message;
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
     document.getElementById('adminLoginForm').addEventListener('submit', async event => {
       event.preventDefault();
       const email = document.getElementById('adminUsername').value.trim();
