@@ -55,6 +55,29 @@
             <button class="admin-button" id="cancelAdminLogin" type="button">Cancelar</button>
           </div>
         </form>
+        <button class="admin-link" id="forgotAdminPassword" type="button">¿Olvidaste tu contraseña? Configurar o restablecer contraseña</button>
+        <form id="adminRecoveryForm" hidden>
+          <h3>Restablecer contraseña</h3>
+          <p>Escribe el correo de la cuenta administradora. Te enviaremos un enlace para crear una contraseña nueva.</p>
+          <label for="adminRecoveryEmail">Correo electrónico</label>
+          <input id="adminRecoveryEmail" name="email" type="email" autocomplete="email" required>
+          <p class="admin-message" id="adminRecoveryMessage" role="status"></p>
+          <div class="admin-actions">
+            <button class="admin-button admin-button-primary" type="submit">Enviar enlace</button>
+            <button class="admin-button" id="cancelAdminRecovery" type="button">Volver al inicio de sesión</button>
+          </div>
+        </form>
+        <form id="adminSetPasswordForm" hidden>
+          <h3>Crear nueva contraseña</h3>
+          <label for="adminNewPassword">Nueva contraseña</label>
+          <input id="adminNewPassword" name="new-password" type="password" autocomplete="new-password" minlength="8" required>
+          <label for="adminConfirmPassword">Confirmar contraseña</label>
+          <input id="adminConfirmPassword" name="confirm-password" type="password" autocomplete="new-password" minlength="8" required>
+          <p class="admin-message" id="adminSetPasswordMessage" role="status"></p>
+          <div class="admin-actions">
+            <button class="admin-button admin-button-primary" type="submit">Guardar contraseña</button>
+          </div>
+        </form>
       </div>
 
       <div class="admin-dashboard" id="adminDashboard" hidden>
