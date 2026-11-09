@@ -1299,8 +1299,7 @@ const programData = [
       submitButton.disabled = true;
       message.textContent = 'Enviando enlace...';
       try {
-        const redirectTo = new URL('./', window.location.href).toString();
-        const { error } = await supabaseClient.auth.resetPasswordForEmail(email, { redirectTo });
+        const { error } = await supabaseClient.auth.resetPasswordForEmail(email);
         if (error) throw error;
         message.textContent = 'Si el correo corresponde a una cuenta, recibirás un enlace para crear una nueva contraseña.';
       } catch (error) {
