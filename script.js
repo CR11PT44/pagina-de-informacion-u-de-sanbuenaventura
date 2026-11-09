@@ -670,10 +670,14 @@ const programData = [
       closeDetail();
 
       const isTechnology = catalog === 'tecnologias';
-      document.getElementById('undergraduateTab').classList.toggle('active', !isTechnology);
-      document.getElementById('undergraduateTab').setAttribute('aria-selected', String(!isTechnology));
-      document.getElementById('technologyTab').classList.toggle('active', isTechnology);
-      document.getElementById('technologyTab').setAttribute('aria-selected', String(isTechnology));
+      const undergraduateTab = document.getElementById('undergraduateTab');
+      const technologyTab = document.getElementById('technologyTab');
+      if (undergraduateTab && technologyTab) {
+        undergraduateTab.classList.toggle('active', !isTechnology);
+        undergraduateTab.setAttribute('aria-selected', String(!isTechnology));
+        technologyTab.classList.toggle('active', isTechnology);
+        technologyTab.setAttribute('aria-selected', String(isTechnology));
+      }
       document.getElementById('catalogHeading').innerText = isTechnology ? 'Tecnologías por facultad' : 'Pregrados profesionales';
 
       renderFacultyFilters();
@@ -1342,6 +1346,6 @@ const programData = [
 
     document.getElementById('backToCatalog').addEventListener('click', closeDetail);
 
-    switchCatalog('pregrados');
+    switchCatalog(document.body.dataset.catalog === 'tecnologias' ? 'tecnologias' : 'pregrados');
     initializeSupabase();
   
