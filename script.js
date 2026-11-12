@@ -504,6 +504,150 @@ const programData = [
       }
     ];
 
+    const posgradoAdmissionUrl = 'https://www.usbbog.edu.co/admisiones/posgrado/';
+    const posgradoData = [
+      {
+        id: 'especializacion-psicologia-seguridad-salud-trabajo',
+        title: 'Especialización en Psicología de la Seguridad y Salud en el Trabajo',
+        faculty: 'Psicología',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-psicologia/especializacion-en-psicologia-de-la-seguridad-y-salud-en-el-trabajo/'
+      },
+      {
+        id: 'especializacion-evaluacion-diagnostico-neuropsicologico',
+        title: 'Especialización en Evaluación y Diagnóstico Neuropsicológico',
+        faculty: 'Psicología',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-psicologia/especializacion-en-evaluacion-y-diagnostico-neuropsicologico/'
+      },
+      {
+        id: 'maestria-psicologia-clinica',
+        title: 'Maestría en Psicología Clínica',
+        faculty: 'Psicología',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-psicologia/maestria-en-psicologia-clinica/'
+      },
+      {
+        id: 'especializacion-pedagogia-docencia-universitaria',
+        title: 'Especialización en Pedagogía y Docencia Universitaria',
+        faculty: 'Humanidades y Ciencias de la Educación',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-humanidades-y-ciencias-de-la-educacion/especializacion-en-pedagogia-y-docencia-universitaria/'
+      },
+      {
+        id: 'maestria-educacion-mediada-tic',
+        title: 'Maestría en Educación Mediada con las TIC',
+        faculty: 'Humanidades y Ciencias de la Educación',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-humanidades-y-ciencias-de-la-educacion/maestria-en-educacion-mediada-con-las-tic/'
+      },
+      {
+        id: 'maestria-ciencias-educacion',
+        title: 'Maestría en Ciencias de la Educación',
+        faculty: 'Humanidades y Ciencias de la Educación',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-humanidades-y-ciencias-de-la-educacion/maestria-en-ciencias-de-la-educacion/'
+      },
+      {
+        id: 'maestria-filosofia-contemporanea',
+        title: 'Maestría en Filosofía Contemporánea',
+        faculty: 'Humanidades y Ciencias de la Educación',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-humanidades-y-ciencias-de-la-educacion/maestria-en-filosofia-contemporanea/'
+      },
+      {
+        id: 'maestria-teologia-biblia',
+        title: 'Maestría en Teología de la Biblia',
+        faculty: 'Humanidades y Ciencias de la Educación',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-humanidades-y-ciencias-de-la-educacion/maestria-en-teologia-de-la-biblia/'
+      },
+      {
+        id: 'doctorado-humanidades-humanismo-persona',
+        title: 'Doctorado en Humanidades. Humanismo y Persona',
+        faculty: 'Humanidades y Ciencias de la Educación',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-humanidades-y-ciencias-de-la-educacion/doctorado-en-humanidades-humanismo-y-persona/'
+      },
+      {
+        id: 'especializacion-produccion-audiovisual-ia',
+        title: 'Especialización en Producción Audiovisual Asistida por Inteligencia Artificial',
+        faculty: 'Ingeniería',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-ingenieria/especializacion-en-produccion-audiovisual-asistida-por-inteligencia-artificial/'
+      },
+      {
+        id: 'especializacion-automatizacion-procesos-industriales',
+        title: 'Especialización en Automatización de Procesos Industriales',
+        faculty: 'Ingeniería',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-ingenieria/especializacion-en-automatizacion-de-procesos-industriales/'
+      },
+      {
+        id: 'especializacion-gestion-soluciones-digitales',
+        title: 'Especialización en Gestión de Soluciones Digitales',
+        faculty: 'Ingeniería',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-ingenieria/especializacion-en-gestion-de-soluciones-digitales/'
+      },
+      {
+        id: 'maestria-ingenieria-informatica',
+        title: 'Maestría en Ingeniería Informática',
+        faculty: 'Ingeniería',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-ingenieria/maestria-en-ingenieria-informatica/'
+      },
+      {
+        id: 'maestria-internet-cosas-transformacion-digital',
+        title: 'Maestría en Internet de las Cosas y Transformación Digital',
+        faculty: 'Ingeniería',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-ingenieria/maestria-en-internet-de-las-cosas-y-transformacion-digital/'
+      },
+      {
+        id: 'maestria-direccion-empresas-mba',
+        title: 'Maestría en Dirección de Empresas (MBA)',
+        faculty: 'Ciencias Económicas y Administrativas',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-ciencias-economicas-y-administrativas/maestria-en-direccion-de-empresas/'
+      },
+      {
+        id: 'especializacion-contratacion-estatal-derecho-sancionatorio',
+        title: 'Especialización en Contratación Estatal y Derecho Sancionatorio',
+        faculty: 'Ciencias Jurídicas y Políticas',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-ciencias-juridicas-y-politicas/especializacion-en-contratacion-estatal-y-derecho-sancionatorio/'
+      },
+      {
+        id: 'maestria-derecho-administracion-justicia',
+        title: 'Maestría en Derecho y Administración de Justicia',
+        faculty: 'Ciencias Jurídicas y Políticas',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-ciencias-juridicas-y-politicas/maestria-en-derecho-y-administracion-de-justicia/'
+      },
+      {
+        id: 'maestria-dinamicas-territoriales-desarrollo',
+        title: 'Maestría en Dinámicas Territoriales y Desarrollo',
+        faculty: 'Ciencias Jurídicas y Políticas',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-ciencias-juridicas-y-politicas/maestria-en-dinamicas-territoriales-y-desarrollo/'
+      },
+      {
+        id: 'maestria-derecho-internacional-relaciones-internacionales',
+        title: 'Maestría en Derecho Internacional y Relaciones Internacionales',
+        faculty: 'Ciencias Jurídicas y Políticas',
+        url: 'https://www.usbbog.edu.co/facultades/facultad-de-ciencias-juridicas-y-politicas/maestria-en-derecho-internacional-y-relaciones-internacionales/'
+      }
+    ].map(program => ({
+      id: program.id,
+      title: program.title,
+      faculty: program.faculty,
+      price: 'Consultar ficha oficial',
+      semesters: 'Consultar ficha oficial',
+      modality: 'Consultar ficha oficial',
+      degree: 'Posgrado',
+      snies: 'Consultar ficha oficial',
+      summary: 'Consulta la ficha oficial para conocer la información académica vigente de este programa.',
+      overview: 'Consulta la ficha oficial del programa para conocer su perfil, plan de estudios y modalidad.',
+      competencies: ['Consulta la ficha oficial del programa.'],
+      practices: 'Consulta la ficha oficial del programa para conocer su plan de estudios y actividades formativas.',
+      advantages: ['Consulta la ficha oficial del programa.'],
+      extraSections: [
+        {
+          title: 'Requisitos de admisión',
+          text: 'Los requisitos específicos para este programa están pendientes de confirmación en una fuente oficial. Consulta el proceso de admisión de posgrado y confirma los requisitos vigentes con la Universidad.',
+          url: posgradoAdmissionUrl
+        },
+        {
+          title: 'Ficha oficial del programa',
+          text: 'Consulta la información académica vigente en el sitio oficial de la Universidad.',
+          url: program.url
+        }
+      ]
+    }));
+
     const programFields = [
       'title', 'faculty', 'price', 'semesters', 'modality', 'degree',
       'snies', 'summary', 'overview', 'competencies', 'practices', 'advantages'
@@ -511,6 +655,7 @@ const programData = [
     let programChangeHistory = [];
     let supabaseClient = null;
     let remoteProgramCount = 0;
+    let remotePosgradoCount = 0;
     let currentAdminUser = '';
     let adminLoggedIn = false;
     const bundledPrograms = programData.map(program => ({
@@ -522,6 +667,12 @@ const programData = [
       ...program,
       competencies: [...program.competencies],
       advantages: [...program.advantages]
+    }));
+    const bundledPosgrados = posgradoData.map(program => ({
+      ...program,
+      competencies: [...program.competencies],
+      advantages: [...program.advantages],
+      extraSections: program.extraSections.map(section => ({ ...section }))
     }));
 
     function showSupabaseStatus(message, isError = false) {
@@ -583,9 +734,12 @@ const programData = [
 
       const pregrados = data.filter(row => row.catalog === 'pregrados').map(fromDatabaseProgram);
       const technologies = data.filter(row => row.catalog === 'tecnologias').map(fromDatabaseProgram);
+      const posgrados = data.filter(row => row.catalog === 'posgrados').map(fromDatabaseProgram);
       programData.splice(0, programData.length, ...pregrados);
       technologyData.splice(0, technologyData.length, ...technologies);
+      posgradoData.splice(0, posgradoData.length, ...(posgrados.length ? posgrados : bundledPosgrados));
       remoteProgramCount = data.length;
+      remotePosgradoCount = posgrados.length;
       switchCatalog(currentCatalog);
       if (adminLoggedIn) renderAdminProgramList();
       return data;
@@ -676,7 +830,9 @@ const programData = [
     let currentFaculty = 'todas';
 
     function getActivePrograms() {
-      return currentCatalog === 'tecnologias' ? technologyData : programData;
+      if (currentCatalog === 'tecnologias') return technologyData;
+      if (currentCatalog === 'posgrados') return posgradoData;
+      return programData;
     }
 
     function switchCatalog(catalog) {
@@ -685,6 +841,7 @@ const programData = [
       closeDetail();
 
       const isTechnology = catalog === 'tecnologias';
+      const isPosgrado = catalog === 'posgrados';
       const undergraduateTab = document.getElementById('undergraduateTab');
       const technologyTab = document.getElementById('technologyTab');
       if (undergraduateTab && technologyTab) {
@@ -693,7 +850,9 @@ const programData = [
         technologyTab.classList.toggle('active', isTechnology);
         technologyTab.setAttribute('aria-selected', String(isTechnology));
       }
-      document.getElementById('catalogHeading').innerText = isTechnology ? 'Tecnologías por facultad' : 'Pregrados profesionales';
+      document.getElementById('catalogHeading').innerText = isTechnology
+        ? 'Tecnologías por facultad'
+        : isPosgrado ? 'Posgrados' : 'Pregrados profesionales';
 
       renderFacultyFilters();
       filterPrograms();
@@ -798,7 +957,9 @@ const programData = [
             <span class="tag">${escapeHTML(prog.modality.split('/')[0])}</span>
             <span class="tag">${escapeHTML(prog.semesters)}</span>
           </div>
-          <div class="card-price">${escapeHTML(prog.price)} <span>/ semestre</span></div>
+          <div class="card-price">${currentCatalog === 'posgrados'
+            ? escapeHTML(prog.price)
+            : `${escapeHTML(prog.price)} <span>/ semestre</span>`}</div>
           <div class="card-summary">${escapeHTML(prog.summary)}</div>
           <div class="card-footer">
             <span>Ver información detallada</span>
@@ -823,7 +984,8 @@ const programData = [
           prog.modality,
           ...prog.competencies,
           prog.practices,
-          ...prog.advantages
+          ...prog.advantages,
+          ...(prog.extraSections || []).flatMap(section => [section.title, section.text])
         ].join(' ').toLowerCase();
         const matchesSearch = searchableContent.includes(searchTerm);
         return matchesFaculty && matchesSearch;
@@ -857,12 +1019,20 @@ const programData = [
       document.getElementById('detFaculty').innerText = prog.faculty;
       document.getElementById('detTitle').innerText = prog.title;
       document.getElementById('detSub').innerText = `${prog.degree} • ${prog.snies}`;
-      document.getElementById('detPrice').innerText = `${prog.price} COP`;
+      const isPosgrado = currentCatalog === 'posgrados';
+      document.getElementById('detPriceHeading').textContent = isPosgrado ? 'Valor de matrícula' : 'Valor por Semestre';
+      document.getElementById('detPrice').innerText = isPosgrado
+        ? prog.price
+        : `${prog.price} COP`;
       document.getElementById('detDuration').innerText = prog.semesters;
       document.getElementById('detModality').innerText = prog.modality;
       document.getElementById('detDegree').innerText = prog.degree;
       document.getElementById('detOverview').innerText = prog.overview;
       document.getElementById('detPractices').innerText = prog.practices;
+      document.getElementById('detOverview').closest('.detail-section').hidden = isPosgrado;
+      document.getElementById('detCompetencies').closest('.detail-section').hidden = isPosgrado;
+      document.getElementById('detPractices').closest('.detail-section').hidden = isPosgrado;
+      document.getElementById('detAdvantages').closest('.detail-section').hidden = isPosgrado;
 
       // Populate list items
       const compUl = document.getElementById('detCompetencies');
@@ -888,6 +1058,15 @@ const programData = [
         const text = document.createElement('p');
         text.textContent = section.text;
         sectionElement.append(heading, text);
+        const safeUrl = getHttpsUrl(section.url);
+        if (safeUrl) {
+          const link = document.createElement('a');
+          link.href = safeUrl;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.textContent = 'Consultar fuente oficial';
+          sectionElement.appendChild(link);
+        }
         return sectionElement;
       }));
 
@@ -902,6 +1081,18 @@ const programData = [
     function closeDetail() {
       document.getElementById('detailView').style.display = 'none';
       document.getElementById('programsGrid').style.removeProperty('display');
+      document.querySelectorAll('#detailView .detail-section').forEach(section => {
+        section.hidden = false;
+      });
+    }
+
+    function getHttpsUrl(value) {
+      try {
+        const url = new URL(value);
+        return url.protocol === 'https:' ? url.href : '';
+      } catch {
+        return '';
+      }
     }
 
     function renderAdminProgramList() {
@@ -910,7 +1101,8 @@ const programData = [
 
       [
         ...programData.map(program => ({ program, catalog: 'pregrados' })),
-        ...technologyData.map(program => ({ program, catalog: 'tecnologias' }))
+        ...technologyData.map(program => ({ program, catalog: 'tecnologias' })),
+        ...posgradoData.map(program => ({ program, catalog: 'posgrados' }))
       ].forEach(({ program, catalog }) => {
         const row = document.createElement('div');
         row.className = 'admin-program-row';
@@ -921,7 +1113,8 @@ const programData = [
         name.textContent = program.title;
         const type = document.createElement('span');
         type.className = 'admin-program-type';
-        type.textContent = catalog === 'pregrados' ? 'Pregrado profesional' : 'Tecnología';
+        type.textContent = catalog === 'pregrados' ? 'Pregrado profesional'
+          : catalog === 'tecnologias' ? 'Tecnología' : 'Posgrado';
         label.append(name, type);
 
         const actions = document.createElement('div');
@@ -981,7 +1174,7 @@ const programData = [
 
     let extraSectionFieldId = 0;
 
-    function createExtraSectionField(section = { title: '', text: '' }) {
+    function createExtraSectionField(section = { title: '', text: '', url: '' }) {
       extraSectionFieldId += 1;
       const fieldId = extraSectionFieldId;
       const wrapper = document.createElement('div');
@@ -1007,13 +1200,23 @@ const programData = [
       textInput.value = section.text;
       textInput.placeholder = 'Escribe la información que se mostrará en la ficha pública.';
 
+      const urlLabel = document.createElement('label');
+      urlLabel.textContent = 'Enlace de referencia (opcional)';
+      urlLabel.htmlFor = `adminExtraUrl${fieldId}`;
+      const urlInput = document.createElement('input');
+      urlInput.id = `adminExtraUrl${fieldId}`;
+      urlInput.className = 'admin-extra-section-url';
+      urlInput.type = 'url';
+      urlInput.value = section.url || '';
+      urlInput.placeholder = 'https://...';
+
       const removeButton = document.createElement('button');
       removeButton.className = 'admin-button admin-button-danger';
       removeButton.type = 'button';
       removeButton.textContent = 'Quitar espacio';
       removeButton.addEventListener('click', () => wrapper.remove());
 
-      wrapper.append(titleLabel, titleInput, textLabel, textInput, removeButton);
+      wrapper.append(titleLabel, titleInput, textLabel, textInput, urlLabel, urlInput, removeButton);
       return wrapper;
     }
 
@@ -1021,6 +1224,7 @@ const programData = [
       const baseId = title.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
         .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'programa';
       const existingIds = new Set([...programData, ...technologyData].map(program => program.id));
+      posgradoData.forEach(program => existingIds.add(program.id));
       let candidate = baseId;
       let suffix = 2;
       while (existingIds.has(candidate)) {
@@ -1034,7 +1238,7 @@ const programData = [
       if (Array.isArray(value)) {
         return value.map(item => typeof item === 'string'
           ? item
-          : `${item.title}: ${item.text}`).join('\n') || '(vacío)';
+          : `${item.title}: ${item.text}${item.url ? ` (${item.url})` : ''}`).join('\n') || '(vacío)';
       }
       return value === null || value === undefined || value === ''
         ? '(vacío)'
@@ -1103,9 +1307,19 @@ const programData = [
     async function seedInitialCatalog() {
       const seedRows = [
         ...bundledPrograms.map((program, index) => toDatabaseProgram(program, 'pregrados', index * 10)),
-        ...bundledTechnologies.map((program, index) => toDatabaseProgram(program, 'tecnologias', index * 10))
+        ...bundledTechnologies.map((program, index) => toDatabaseProgram(program, 'tecnologias', index * 10)),
+        ...bundledPosgrados.map((program, index) => toDatabaseProgram(program, 'posgrados', index * 10))
       ];
       const { error } = await supabaseClient.from('programs').insert(seedRows);
+      if (error) throw error;
+    }
+
+    async function seedPosgradoCatalog() {
+      const seedRows = bundledPosgrados.map((program, index) =>
+        toDatabaseProgram(program, 'posgrados', index * 10));
+      const { error } = await supabaseClient
+        .from('programs')
+        .upsert(seedRows, { onConflict: 'id', ignoreDuplicates: true });
       if (error) throw error;
     }
 
@@ -1119,7 +1333,8 @@ const programData = [
       const extraSections = [...document.querySelectorAll('#adminExtraSectionList .admin-extra-section')]
         .map(section => ({
           title: section.querySelector('.admin-extra-section-title').value.trim(),
-          text: section.querySelector('.admin-extra-section-text').value.trim()
+          text: section.querySelector('.admin-extra-section-text').value.trim(),
+          url: section.querySelector('.admin-extra-section-url').value.trim()
         }));
       const program = {
         id: editingId,
@@ -1143,7 +1358,7 @@ const programData = [
         message.textContent = 'Inicia sesión con un perfil administrador conectado a Supabase para guardar cambios.';
         return;
       }
-      if (catalog !== 'pregrados' && catalog !== 'tecnologias') {
+      if (catalog !== 'pregrados' && catalog !== 'tecnologias' && catalog !== 'posgrados') {
         message.textContent = 'Selecciona un catálogo válido.';
         return;
       }
@@ -1158,23 +1373,32 @@ const programData = [
         message.textContent = 'Completa el título y el texto de cada espacio adicional, o quítalo antes de guardar.';
         return;
       }
+      if (extraSections.some(section => section.url && !getHttpsUrl(section.url))) {
+        message.textContent = 'Cada enlace adicional debe usar una dirección HTTPS válida.';
+        return;
+      }
 
       if (!editingId) program.id = createProgramId(program.title);
 
       const nextPregrados = programData.slice();
       const nextTechnologies = technologyData.slice();
+      const nextPosgrados = posgradoData.slice();
       const previousIndex = nextPregrados.findIndex(item => item.id === editingId);
       const technologyIndex = nextTechnologies.findIndex(item => item.id === editingId);
-      if (editingId && previousIndex === -1 && technologyIndex === -1) {
+      const posgradoIndex = nextPosgrados.findIndex(item => item.id === editingId);
+      if (editingId && previousIndex === -1 && technologyIndex === -1 && posgradoIndex === -1) {
         message.textContent = 'No se encontró el programa que intentas editar. Actualiza la lista.';
         return;
       }
 
       const previousProgram = previousIndex !== -1 ? nextPregrados[previousIndex]
-        : technologyIndex !== -1 ? nextTechnologies[technologyIndex] : null;
+        : technologyIndex !== -1 ? nextTechnologies[technologyIndex]
+          : posgradoIndex !== -1 ? nextPosgrados[posgradoIndex] : null;
       const previousCatalog = previousIndex !== -1 ? 'pregrados'
-        : technologyIndex !== -1 ? 'tecnologias' : null;
-      const targetPrograms = catalog === 'pregrados' ? nextPregrados : nextTechnologies;
+        : technologyIndex !== -1 ? 'tecnologias'
+          : posgradoIndex !== -1 ? 'posgrados' : null;
+      const targetPrograms = catalog === 'pregrados' ? nextPregrados
+        : catalog === 'tecnologias' ? nextTechnologies : nextPosgrados;
       const sortOrder = previousProgram && previousCatalog === catalog
         ? previousProgram.sortOrder
         : targetPrograms.reduce((highest, item) => Math.max(highest, item.sortOrder ?? -10), -10) + 10;
@@ -1375,6 +1599,9 @@ const programData = [
           message.textContent = 'Importando el catálogo inicial a Supabase...';
           await seedInitialCatalog();
           showSupabaseStatus('');
+        } else if (remotePosgradoCount === 0) {
+          message.textContent = 'Importando el catálogo de posgrados a Supabase...';
+          await seedPosgradoCatalog();
         }
         await loadProgramsFromSupabase();
         await loadProgramHistory();
@@ -1434,6 +1661,8 @@ const programData = [
 
     document.getElementById('backToCatalog').addEventListener('click', closeDetail);
 
-    switchCatalog(document.body.dataset.catalog === 'tecnologias' ? 'tecnologias' : 'pregrados');
+    switchCatalog(['pregrados', 'tecnologias', 'posgrados'].includes(document.body.dataset.catalog)
+      ? document.body.dataset.catalog
+      : 'pregrados');
     initializeSupabase();
   

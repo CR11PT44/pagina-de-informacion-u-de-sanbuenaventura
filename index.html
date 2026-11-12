@@ -22,6 +22,7 @@
     <nav class="catalog-tabs" aria-label="Catálogos académicos">
       <a class="catalog-tab active" href="index.html" aria-current="page">Pregrados profesionales</a>
       <a class="catalog-tab" href="tecnologias.html">Tecnologías por facultad</a>
+      <a class="catalog-tab" href="posgrados.html">Posgrados</a>
     </nav>
 
     <div class="search-box">
@@ -102,6 +103,7 @@
             <select id="adminProgramCatalog" required>
               <option value="pregrados">Pregrado profesional</option>
               <option value="tecnologias">Tecnología</option>
+              <option value="posgrados">Posgrado</option>
             </select>
             <label for="adminProgramTitle">Nombre del programa</label>
             <input id="adminProgramTitle" required>
@@ -186,7 +188,7 @@
           <p id="detDuration">0 Semestres</p>
         </div>
         <div class="info-item">
-          <h4>Valor por Semestre</h4>
+          <h4 id="detPriceHeading">Valor por Semestre</h4>
           <p id="detPrice">$0 COP</p>
         </div>
         <div class="info-item">
@@ -227,6 +229,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
   <script src="supabase-config.js"></script>
-  <script src="script.js?v=6f1b9ac5" defer></script>
+  <script src="script.js?v=posgrados-1" defer></script>
 </body>
 </html>
