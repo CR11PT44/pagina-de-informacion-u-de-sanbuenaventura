@@ -1,5 +1,7 @@
 -- Esquema inicial para la guia de pregrados y tecnologias.
 -- Ejecutar una vez en Supabase: SQL Editor -> New query.
+-- En una base existente, ejecutar supabase-posgrados-migration.sql para
+-- habilitar e importar el catálogo de posgrados.
 --
 -- Despues de crear las cuentas en Authentication -> Users, agregue sus
 -- UUID a public.admin_users. Ejemplo (reemplace los correos):
@@ -8,7 +10,7 @@
 -- WHERE email IN ('admin1@ejemplo.com', 'admin2@ejemplo.com', 'admin3@ejemplo.com')
 -- ON CONFLICT (user_id) DO NOTHING;
 --
--- catalog admite 'pregrados' y 'tecnologias'. Los programas actuales deben
+-- catalog admite 'pregrados', 'tecnologias' y 'posgrados'. Los programas actuales deben
 -- migrarse desde script.js a public.programs; este archivo crea el esquema,
 -- pero no importa automaticamente los datos locales del navegador.
 
@@ -19,7 +21,8 @@ CREATE TABLE IF NOT EXISTS public.admin_users (
 
 CREATE TABLE IF NOT EXISTS public.programs (
   id text PRIMARY KEY,
-  catalog text NOT NULL CHECK (catalog IN ('pregrados', 'tecnologias')),
+  catalog text NOT NULL CONSTRAINT programs_catalog_check
+    CHECK (catalog IN ('pregrados', 'tecnologias', 'posgrados')),
   title text NOT NULL,
   faculty text NOT NULL,
   price text NOT NULL,
@@ -49,7 +52,8 @@ CREATE TABLE IF NOT EXISTS public.program_change_history (
   id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   program_id text NOT NULL,
   program_title text NOT NULL,
-  catalog text NOT NULL CHECK (catalog IN ('pregrados', 'tecnologias')),
+  catalog text NOT NULL CONSTRAINT program_change_history_catalog_check
+    CHECK (catalog IN ('pregrados', 'tecnologias', 'posgrados')),
   operation text NOT NULL CHECK (operation IN ('INSERT', 'UPDATE', 'DELETE')),
   actor_id uuid,
   actor_email text,

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POSGRADOS | Universidad de San Buenaventura</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-catalog="posgrados">
+
+  <header>
+    <div class="header-container">
+      <span class="badge-top">CREADO POR MARIO REYES</span>
+      <h1><a class="header-title-link" href="posgrados.html">Guía de Posgrados</a></h1>
+      <p>Explora la oferta de posgrados de la Universidad de San Buenaventura Bogotá y consulta la ficha oficial de cada programa.</p>
+      <button class="admin-access-button" id="adminAccessButton" type="button">Acceso administrador</button>
+    </div>
+  </header>
+
+  <div class="controls-container">
+    <nav class="catalog-tabs" aria-label="Catálogos académicos">
+      <a class="catalog-tab" href="index.html">Pregrados profesionales</a>
+      <a class="catalog-tab" href="tecnologias.html">Tecnologías por facultad</a>
+      <a class="catalog-tab active" href="posgrados.html" aria-current="page">Posgrados</a>
+    </nav>
+
+    <div class="search-box">
+      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      <input type="text" id="searchInput" placeholder="Buscar por nombre, palabra clave o área...">
+    </div>
+
+    <div class="filter-pills" id="facultyFilters">
+      <button class="pill active" data-faculty="todas">Todas las Facultades</button>
+      <button class="pill" data-faculty="Ingeniería">Ingeniería</button>
+      <button class="pill" data-faculty="Psicología">Psicología</button>
+      <button class="pill" data-faculty="Ciencias Económicas y Administrativas">Ciencias Económicas</button>
+      <button class="pill" data-faculty="Ciencias Jurídicas y Políticas">Jurídicas y Políticas</button>
+      <button class="pill" data-faculty="Humanidades y Ciencias de la Educación">Humanidades y Educación</button>
+    </div>
+  </div>
+
+  <main>
+    <p class="supabase-status" id="supabaseStatus" role="status" hidden></p>
+    <section class="admin-panel" id="adminPanel" hidden>
+      <div class="admin-login" id="adminLogin">
+        <h2>Iniciar sesión como administrador</h2>
+        <form id="adminLoginForm">
+          <label for="adminUsername">Correo electrónico</label>
+          <input id="adminUsername" name="username" type="email" autocomplete="username" required>
+          <label for="adminPassword">Contraseña</label>
+          <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
+          <p class="admin-message" id="adminLoginMessage" role="status"></p>
+          <div class="admin-actions">
+            <button class="admin-button admin-button-primary" type="submit">Ingresar</button>
+            <button class="admin-button" id="cancelAdminLogin" type="button">Cancelar</button>
+          </div>
+        </form>
+        <button class="admin-link" id="forgotAdminPassword" type="button">¿Olvidaste tu contraseña? Configurar o restablecer contraseña</button>
+        <form id="adminRecoveryForm" hidden>
+          <h3>Restablecer contraseña</h3>
+          <p>Escribe el correo de la cuenta administradora. Te enviaremos un enlace para crear una contraseña nueva.</p>
+          <label for="adminRecoveryEmail">Correo electrónico</label>
+          <input id="adminRecoveryEmail" name="email" type="email" autocomplete="email" required>
+          <p class="admin-message" id="adminRecoveryMessage" role="status"></p>
+          <div class="admin-actions">
+            <button class="admin-button admin-button-primary" type="submit">Enviar enlace</button>
+            <button class="admin-button" id="cancelAdminRecovery" type="button">Volver al inicio de sesión</button>
+          </div>
+        </form>
+        <form id="adminSetPasswordForm" hidden>
+          <h3>Crear nueva contraseña</h3>
+          <label for="adminNewPassword">Nueva contraseña</label>
+          <input id="adminNewPassword" name="new-password" type="password" autocomplete="new-password" minlength="8" required>
+          <label for="adminConfirmPassword">Confirmar contraseña</label>
+          <input id="adminConfirmPassword" name="confirm-password" type="password" autocomplete="new-password" minlength="8" required>
+          <p class="admin-message" id="adminSetPasswordMessage" role="status"></p>
+          <div class="admin-actions">
+            <button class="admin-button admin-button-primary" type="submit">Guardar contraseña</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="admin-dashboard" id="adminDashboard" hidden>
+        <div class="admin-dashboard-heading">
+          <div>
+            <h2>Administrar programas</h2>
+            <p>Agrega programas o actualiza y elimina la información existente.</p>
+          </div>
+          <button class="admin-button" id="adminLogoutButton" type="button">Cerrar sesión</button>
+        </div>
+
+        <div class="admin-layout">
+          <section class="admin-list-section" aria-labelledby="adminListHeading">
+            <h3 id="adminListHeading">Programas actuales</h3>
+            <div class="admin-program-list" id="adminProgramList"></div>
+          </section>
+
+          <form class="admin-editor" id="adminProgramForm">
+            <h3 id="adminFormHeading">Agregar programa</h3>
+            <input id="adminEditingId" type="hidden">
+            <label for="adminProgramCatalog">Catálogo</label>
+            <select id="adminProgramCatalog" required>
+              <option value="pregrados">Pregrado profesional</option>
+              <option value="tecnologias">Tecnología</option>
+              <option value="posgrados">Posgrado</option>
+            </select>
+            <label for="adminProgramTitle">Nombre del programa</label>
+            <input id="adminProgramTitle" required>
+            <label for="adminProgramFaculty">Facultad</label>
+            <input id="adminProgramFaculty" required>
+            <label for="adminProgramPrice">Precio por semestre</label>
+            <input id="adminProgramPrice" required>
+            <label for="adminProgramSemesters">Duración</label>
+            <input id="adminProgramSemesters" required>
+            <label for="adminProgramModality">Modalidad</label>
+            <input id="adminProgramModality" required>
+            <label for="adminProgramDegree">Título otorgado</label>
+            <input id="adminProgramDegree" required>
+            <label for="adminProgramSnies">SNIES / registro</label>
+            <input id="adminProgramSnies" required>
+            <label for="adminProgramSummary">Resumen</label>
+            <textarea id="adminProgramSummary" rows="3" required></textarea>
+            <label for="adminProgramOverview">Enfoque y perfil profesional</label>
+            <textarea id="adminProgramOverview" rows="4" required></textarea>
+            <label for="adminProgramCompetencies">Competencias (una por línea)</label>
+            <textarea id="adminProgramCompetencies" rows="4" required></textarea>
+            <label for="adminProgramPractices">Prácticas profesionales</label>
+            <textarea id="adminProgramPractices" rows="4" required></textarea>
+            <label for="adminProgramAdvantages">Ventajas (una por línea)</label>
+            <textarea id="adminProgramAdvantages" rows="4" required></textarea>
+            <section class="admin-extra-sections" aria-labelledby="adminExtraSectionsHeading">
+              <div class="admin-extra-sections-heading">
+                <h4 id="adminExtraSectionsHeading">Información adicional para la ficha pública</h4>
+                <button class="admin-button" id="addExtraSection" type="button">Agregar espacio de texto</button>
+              </div>
+              <div class="admin-extra-section-list" id="adminExtraSectionList"></div>
+            </section>
+            <p class="admin-message" id="adminFormMessage" role="status"></p>
+            <div class="admin-actions">
+              <button class="admin-button admin-button-primary" type="submit">Guardar programa</button>
+              <button class="admin-button" id="cancelProgramEdit" type="button">Limpiar</button>
+            </div>
+          </form>
+        </div>
+
+        <section class="admin-history" aria-labelledby="adminHistoryHeading">
+          <div class="admin-history-heading">
+            <div>
+              <h3 id="adminHistoryHeading">Historial de cambios</h3>
+              <p>Consulta qué se modificó, en qué programa y qué perfil administrador realizó el cambio.</p>
+            </div>
+            <label class="admin-history-search-label" for="adminHistorySearch">Buscar en el historial</label>
+            <input id="adminHistorySearch" class="admin-history-search" type="search" placeholder="Programa, usuario o cambio...">
+          </div>
+          <div class="admin-history-list" id="adminHistoryList" aria-live="polite"></div>
+        </section>
+      </div>
+    </section>
+
+    <div id="publicCatalog">
+    <!-- Contenedor Principal con Tarjetas / Cubículos -->
+    <h2 class="catalog-heading" id="catalogHeading">Posgrados</h2>
+    <p class="posgrados-notice">Los requisitos específicos de admisión por programa están pendientes de confirmación. Consulta el <a href="https://www.usbbog.edu.co/admisiones/posgrado/" target="_blank" rel="noopener noreferrer">proceso oficial de admisión para posgrado</a> y verifica la información vigente con la Universidad.</p>
+    <div class="grid" id="programsGrid">
+      <!-- Generado dinámicamente con JavaScript -->
+    </div>
+
+    <!-- Vista Detallada de Un Programa -->
+    <div class="detail-view" id="detailView">
+      <button class="btn-back" id="backToCatalog" type="button">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        Volver a todos los programas
+      </button>
+
+      <div class="detail-header">
+        <div class="detail-faculty" id="detFaculty">Facultad</div>
+        <h2 class="detail-title" id="detTitle">Nombre del Programa</h2>
+        <p class="detail-subtitle" id="detSub">Título otorgado y SNIES</p>
+      </div>
+
+      <div class="detail-grid-info">
+        <div class="info-item">
+          <h4>Modalidad</h4>
+          <p id="detModality">Presencial</p>
+        </div>
+        <div class="info-item">
+          <h4>Duración Estimada</h4>
+          <p id="detDuration">0 Semestres</p>
+        </div>
+        <div class="info-item">
+          <h4 id="detPriceHeading">Valor de matrícula</h4>
+          <p id="detPrice">$0 COP</p>
+        </div>
+        <div class="info-item">
+          <h4>Título Otorgado</h4>
+          <p id="detDegree">Profesional</p>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3>Enfoque Principal y Perfil Profesional</h3>
+        <p id="detOverview"></p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Competencias Clave y Campos de Acción</h3>
+        <ul id="detCompetencies"></ul>
+      </div>
+
+      <div class="detail-section">
+        <h3>Prácticas Profesionales y Escenarios</h3>
+        <div class="highlight-box">
+          <p id="detPractices"></p>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3>Ventajas e Internacionalización</h3>
+        <ul id="detAdvantages"></ul>
+      </div>
+      <div id="detExtraSections"></div>
+    </div>
+    </div>
+  </main>
+
+  <footer>
+    <p> Dirección De La Universidad San Buenaventura: Carrera 8H # 172 – 20 Bogotá </p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="supabase-config.js"></script>
+  <script src="script.js?v=posgrados-1" defer></script>
+</body>
+</html>

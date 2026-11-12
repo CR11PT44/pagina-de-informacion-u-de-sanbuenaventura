@@ -540,6 +540,22 @@
       font-size: 1.5rem;
     }
 
+    .posgrados-notice {
+      background: #fff7ed;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 12px 12px 0;
+      color: #7c2d12;
+      margin: 0 0 1.5rem;
+      padding: 1rem 1.25rem;
+    }
+
+    .detail-section a {
+      color: var(--primary-dark);
+      display: inline-block;
+      font-weight: 600;
+      margin-top: 0.75rem;
+    }
+
     .detail-subtitle {
       color: #64748b;
       font-size: 1.05rem;
